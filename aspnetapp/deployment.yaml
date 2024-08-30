@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pia-aspnetapp
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: pia-aspnetapp
+  template:
+    metadata:
+      labels:
+        app: pia-aspnetapp
+    spec:
+      containers:
+      - name: pia-aspnetapp
+        image: piatech:aspornek
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
